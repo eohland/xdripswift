@@ -257,7 +257,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                                     
                                     if let firmware = firmware?.toDouble(), firmware < 2.6 {
                                         
-                                        dataIsDecryptedToLibre1Format = libreSensorType.decryptIfPossibleAndNeeded(rxBuffer: &rxBuffer, headerLength: bubbleHeaderLength, log: log, patchInfo: patchInfo, uid: rxBuffer[0..<bubbleHeaderLength].bytes)
+                                        dataIsDecryptedToLibre1Format = libreSensorType.decryptIfPossibleAndNeeded(rxBuffer: &rxBuffer, headerLength: bubbleHeaderLength, log: log, patchInfo: patchInfo, uid: [UInt8](rxBuffer.subdata(in: 0..<bubbleHeaderLength)))
                                         
                                     } else {
                                         
